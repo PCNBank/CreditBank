@@ -1,0 +1,41 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>Пользователь не был соханён, так как были допущены ошибки.</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, 'Имя' %></br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :password, 'Пароль' %></br>
+    <%= f.password_field :password %>
+  </div>
+    <div class="field">
+      <%= f.label :password_confirmation, 'Подтверждение' %></br>
+      <%= f.password_field :password_confirmation %>
+    </div>
+  <div class="field">
+    <%= f.label :email %></br>
+    <%= f.email_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :phone, 'Телефон' %></br>
+    <%= f.phone_field :phone %>
+  </div>
+  <div>
+    <p>Роли</p>
+    <%= f.collection_check_boxes :role_ids, Role.all, :id, :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Подтвердить' %>
+  </div>
+<% end %>
