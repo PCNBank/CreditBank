@@ -1,9 +1,9 @@
 PCNBank::Application.routes.draw do
-  get 'admin' => "admin/index"
-  get 'login' => "session/new"
-  post 'login' => "session/create"
-  delete 'logout' => "session/destroy"
-  get 'home' => "home/index"
+  get 'admin' => "admin#index"
+  get 'login' => "session#new"
+  post 'login' => "session#create"
+  delete 'logout' => "session#destroy"
+  get 'home' => "home#index"
   resources :roles
 
   resources :users
